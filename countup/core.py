@@ -9,7 +9,7 @@ class Countup:
     counter: Counter
 
     def most_common(self):
-        raise NotImplementedError
+        return self.counter.most_common()
 
 
 def count_columns(rows: Sequence[dict[str, str]]) -> list[Countup]:
