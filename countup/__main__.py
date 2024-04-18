@@ -24,7 +24,7 @@ reader_functions = {"csv": read_csv, "jsonl": read_jsonl}
 
 
 def main(file: Path, output_root: Path):
-    suffix = file.suffix.removeprefix(".")
+    suffix = file.suffix.lstrip(".")
     reader_func = reader_functions[suffix]
     rows = reader_func(file)
 
