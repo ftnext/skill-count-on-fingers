@@ -27,6 +27,7 @@ Repository = "https://github.com/ftnext/skill-count-on-fingers"
 version = { attr = "countup.__version__" }
 
 [project.optional-dependencies]
+jsonl = ["jsonlines"]
 dev = [
     "taskipy",
     "autoflake",
