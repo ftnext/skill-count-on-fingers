@@ -5,10 +5,20 @@ from pathlib import Path
 from countup.core import count_columns
 
 
-def main(file: Path, output_root: Path):
+def read_csv(file: Path):
     with open(file, encoding="utf8") as fin:
         reader = csv.DictReader(fin)
         rows = list(reader)
+    return rows
+
+
+reader_functions = {"csv": read_csv}
+
+
+def main(file: Path, output_root: Path):
+    suffix = file.suffix.removeprefix(".")
+    reader_func = reader_functions[suffix]
+    rows = reader_func(file)
 
     counters = count_columns(rows)
 
