@@ -12,7 +12,15 @@ def read_csv(file: Path):
     return rows
 
 
-reader_functions = {"csv": read_csv}
+def read_jsonl(file: Path):
+    import jsonlines
+
+    with jsonlines.open(file) as reader:
+        rows = list(reader)
+    return rows
+
+
+reader_functions = {"csv": read_csv, "jsonl": read_jsonl}
 
 
 def main(file: Path, output_root: Path):
